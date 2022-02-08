@@ -22,6 +22,23 @@ class PlaysController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @play.update(play_params)
+      redirect_to play_path
+    else 
+      render "edit"
+    end
+  end
+
+  def destroy
+    @play.destroy
+
+    redirect_to root_path, status: :see_other
+  end
+
   private
 
   def play_params
