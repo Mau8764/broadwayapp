@@ -45,7 +45,8 @@ gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'devise'
 gem "pry"
-
+gem "paperclip"
+gem "aws-sdk"
 # Use Sass to process CSS
 # gem "sassc-rails"
 
