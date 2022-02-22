@@ -9,18 +9,28 @@
       <h1>Reviews</h1>
       <%= render @play.reviews %>
       <div>
-        <%= link_to "Add Reviews", new_play_review_path(@play), class: "btn-custom" %>
+        <%= link_to "Add Reviews", new_play_review_path(@play), class: "btn btn-warning" %>
       </div>
     </div>
   </div>
 </div>
 
 <div class="links btn-group">
-  <%= link_to "Back", root_path %>
+  <%= link_to "Back", root_path, class: "btn btn-primary" %>
   <% if user_signed_in? %>
     <% if @play.user == current_user %>
-      <%= link_to "Edit", edit_play_path %>
-      <%= link_to "Destroy", play_path(@play), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      <%= link_to "Edit", edit_play_path, class: "btn btn-success" %>
+      <%= link_to "Delete", play_path(@play), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
     <% end %>
   <% end %>
-  
+
+  <script>
+	$('.review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
+</script>
+

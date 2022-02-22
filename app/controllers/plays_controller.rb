@@ -1,5 +1,6 @@
 class PlaysController < ApplicationController
   before_action :find_play, only: [:edit, :update, :show, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit]
 
   def index
     if params[:category].blank?
